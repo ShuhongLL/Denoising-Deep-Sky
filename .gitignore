@@ -1,0 +1,6 @@
+experiments/*
+*.ipynb
+*.pth
+*.log
+.vscode
+__pycache__
