@@ -11,10 +11,18 @@
   <a href="https://doongli.github.io/">Dong Li</a>,
   <a href="https://www.mi.t.u-tokyo.ac.jp/harada/">Tatsuya Harada</a>
 </p>
-<h3 align="center">
-  <a href="https://arxiv.org/abs/2601.23276">Arxiv</a> |
-  <a href="">Hugging Face</a>
-</h3>
+
+<p align="center">
+  <a href="https://github.com/ShuhongLL/Denoising-Deep-Sky">
+    <img src="https://img.shields.io/badge/GitHub-Code-181717?style=for-the-badge&logo=github" />
+  </a>
+  <a href="https://arxiv.org/abs/2601.23276">
+    <img src="https://img.shields.io/badge/arXiv-Paper-B31B1B?style=for-the-badge&logo=arxiv" />
+  </a>
+  <a href="https://huggingface.co/datasets/ToferFish/MuSCAT-RawImage">
+    <img src="https://img.shields.io/badge/Hugging%20Face-Data-FFD21E?style=for-the-badge&logo=huggingface&logoColor=white" />
+  </a>
+</p>
 
 
 
@@ -57,7 +65,38 @@ pip install -r requirements.txt
 
 ## 📂 Data Structure
 
-> Coming soon.
+The dataset is organized by instrument, band, and observation.  
+We provide observations from **MuSCAT-3** and **MuSCAT-4** in the **g**, **r**, and **i** bands.  
+Each subdirectory under a band corresponds to a single observation session.
+The dataset is publicly available under the **CC BY-NC 4.0** license at [Hugging Face](https://huggingface.co/datasets/ToferFish/MuSCAT-RawImage).
+
+We provide raw images in compressed **FITS (`.fits.fz`)** format. These files can be viewed using [SAOImageDS9](https://sites.google.com/cfa.harvard.edu/saoimageds9). For a lightweight alternative, you can also install the [FITS extension for VS Code](https://marketplace.visualstudio.com/items?itemName=fits.fitsimagevoy) to inspect the images directly in the VS Code Editor.
+
+For training purposes, we recommend converting the raw images to **NumPy (`.npy`)** format for faster I/O.
+```
+dataset_root/
+├── muscat3_g/
+│   ├── <observation_id_1>/
+│   │   ├── calib/
+│   │   │   ├── BIAS_*.fits.fz
+│   │   │   ├── BPM_*.fits.fz
+│   │   │   ├── DARK_*.fits.fz
+│   │   │   └── SKYFLAT_*.fits.fz
+│   │   ├── data/
+│   │   │   ├── <obs_id>_calib.fits.fz
+│   │   │   ├── <obs_id>_mask.fits.fz
+│   │   │   ├── <obs_id>_mean.fits.fz
+│   │   │   ├── <obs_id>_os.fits.fz
+│   │   │   └── <obs_id>_raw.fits.fz
+│   │   ├── e91/
+│   │   ├── calib.json
+│   │   └── info.json
+│   └── <observation_id_2>/
+│       └── ...
+...
+└── muscat4_i/
+    └── ...
+```
 
 ---
 
