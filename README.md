@@ -100,6 +100,26 @@ dataset_root/
 
 ---
 
+## 🔎 Data Explanation
+
+The following table summarizes the main data products included in each observation directory.
+
+| Product | Symbol | Unit | Description |
+|---|---|---|---|
+| Bias (master-bias) | `BIAS` | `e⁻` | Electronic offset estimate; subtracted in the electron domain. |
+| Dark-current (master-dark) | `DARK` | `e⁻ / s` | Dark-current template scaled by exposure time and subtracted in the electron domain. |
+| Skyflat (master-skyflat) | `SKYFLAT` | – | Multiplicative correction for pixel-response variation and vignetting; applied by division in the electron domain. |
+| Raw frame | `RAW` | `ADU (DN)` | Observed raw image; overscan correction is first applied in ADU. |
+| Calibrated frame | `CALIB` | `ADU (DN)` | BANZAI-calibrated output; computed in electrons and converted back to ADU for storage. |
+| Noisy frame (input) | `OS` | `ADU (DN)` | Overscan-corrected frame used as the noisy input. |
+| Stacked frame | `MEAN` | `ADU (DN)` | High-SNR reference frame obtained by stacking multiple `E91` frames to suppress stochastic noise while preserving scene structure. |
+| Extra calibrated frames | `E91` | `ADU (DN)` | Additional calibrated frames used to construct `MEAN`. |
+| Background mask | `MASK` | – | Source mask associated with each observation, where `0` denotes source pixels and `1` denotes background pixels. |
+| Drizzled frame | `DRZ` | `ADU (DN)` | Frame constructed by combining multiple `E91` frames using a drizzle algorithm. |
+| Gain | `GAIN` | `e⁻ / ADU` | Conversion factor between electrons and ADU: `e⁻ = ADU × GAIN`. |
+
+---
+
 ## 🔭 Synthesis
 
 > Coming soon.
