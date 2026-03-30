@@ -177,7 +177,9 @@ Key arguments:
 | `-o`, `--output` | `<ckpt_dir>/results/<split>` | Output directory |
 | `--eval` | | Also compute metrics after saving predictions |
 
-For mock-PSF flux evaluation (injected sources):
+In the zero-shot evaluation on the MuSCAT-4 dataset, the fixed-pattern noise in the RAW images is rotated by 180 degrees compared with the MuSCAT-3 dataset used to train the network.
+
+We also provide example code to mock the PSF and evaluate FLUX-SNR via source injection. Please feel free to adjust the number of injected sources (we used 10 in the paper).
 
 ```bash
 python inference_psf.py \
